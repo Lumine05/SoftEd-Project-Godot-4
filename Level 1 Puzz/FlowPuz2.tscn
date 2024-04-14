@@ -1,0 +1,611 @@
+[gd_scene load_steps=26 format=3 uid="uid://bnbf4kkv737hb"]
+
+[ext_resource type="Script" path="res://Level 1 Puzz/FlowPuz2.gd" id="1_pio44"]
+[ext_resource type="Texture2D" uid="uid://il6msw1vbtym" path="res://Level 1 Puzz/FlowChartPlaceHolder2.png" id="2_aobmc"]
+[ext_resource type="Texture2D" uid="uid://c1cg87aev5wqo" path="res://Level 1 Puzz/LongEnergy.png" id="3_32s4y"]
+[ext_resource type="PackedScene" uid="uid://bwiwo5m4pqomk" path="res://Level 1 Puzz/slot.tscn" id="4_4nk3b"]
+[ext_resource type="Texture2D" uid="uid://d4ir2juge12gq" path="res://Level 1 Puzz/ShortEnergy.png" id="4_gfadt"]
+[ext_resource type="Texture2D" uid="uid://douhshicycg8" path="res://Level 1 Puzz/Switch offv2.png" id="5_38qf7"]
+[ext_resource type="Texture2D" uid="uid://cmhjomhtdswbg" path="res://Level 1 Puzz/Switch onv2.png" id="6_1ldl7"]
+[ext_resource type="Texture2D" uid="uid://cvu7ip180t8iq" path="res://Level 1 Puzz/Decision FlowChart v2.png" id="6_186hw"]
+[ext_resource type="Texture2D" uid="uid://dw5xdssu3jfqj" path="res://Level 1 Puzz/FlowChartPuzzleHolder.png" id="7_qdcih"]
+[ext_resource type="Texture2D" uid="uid://imoy6a5ughb7" path="res://Level 1 Puzz/FlowChartStart v1.png" id="8_wm65y"]
+[ext_resource type="Texture2D" uid="uid://bdxi7sgynqj72" path="res://Level 1 Puzz/IOlow chart v2.png" id="9_68msp"]
+[ext_resource type="Texture2D" uid="uid://c60h3jms6lp2s" path="res://Level 1 Puzz/Process FlowChart.png" id="10_jtwae"]
+[ext_resource type="Texture2D" uid="uid://bbmmt1qbjyaql" path="res://Level 1 Puzz/EndChartv2.png" id="11_7a3kx"]
+[ext_resource type="Texture2D" uid="uid://buymw3wcsj4k6" path="res://Level 1 Puzz/CornerEnergy90dg.png" id="11_hn0xt"]
+[ext_resource type="Texture2D" uid="uid://ss3o7y20nm5p" path="res://Level 1 Puzz/CornerEnergy90dgbottomleft.png" id="12_mrm3u"]
+[ext_resource type="Texture2D" uid="uid://wsfo3s58t0ck" path="res://Level 1 Puzz/arrowDown.png" id="12_tvwvk"]
+[ext_resource type="FontFile" uid="uid://galii81ef8j4" path="res://Level 1 Puzz/fonts/ThaleahFat.ttf" id="13_55c3u"]
+[ext_resource type="Texture2D" uid="uid://dwxm6g8xssmua" path="res://Level 1 Puzz/ButtonX.png" id="14_sikko"]
+[ext_resource type="Texture2D" uid="uid://ddxaq3io48o8y" path="res://Level 1 Puzz/ButtonXClicked.png" id="15_evhub"]
+
+[sub_resource type="Gradient" id="Gradient_oquqd"]
+offsets = PackedFloat32Array(0.0470588, 1)
+colors = PackedColorArray(1, 1, 1, 0.141176, 0, 0, 0, 0.447059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4dbho"]
+gradient = SubResource("Gradient_oquqd")
+use_hdr = true
+fill = 2
+fill_from = Vector2(0.503759, 0.477444)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hisd6"]
+atlas = ExtResource("3_32s4y")
+region = Rect2(0, 0, 9, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2cmc"]
+atlas = ExtResource("3_32s4y")
+region = Rect2(0, 0, 9, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pl1k"]
+atlas = ExtResource("3_32s4y")
+region = Rect2(0, 0, 9, 99)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lkx3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_38qf7")
+}],
+"loop": false,
+"name": &"Off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1ldl7")
+}],
+"loop": false,
+"name": &"On",
+"speed": 5.0
+}]
+
+[node name="Flow_puz2" type="CanvasLayer"]
+script = ExtResource("1_pio44")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+z_index = -2
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = SubResource("GradientTexture2D_4dbho")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 379.0
+offset_top = 107.0
+offset_right = 796.0
+offset_bottom = 538.0
+texture = ExtResource("2_aobmc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(589, 144)
+
+[node name="Slot1" parent="Start" instance=ExtResource("4_4nk3b")]
+offset_left = 2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = -3.0
+
+[node name="TextureRect" parent="Start/Slot1" index="0"]
+texture = ExtResource("10_jtwae")
+Slot = 4
+
+[node name="Slot1" parent="Start/Slot1" index="1"]
+z_index = -1
+text = "4
+"
+
+[node name="Slot2" parent="Start" instance=ExtResource("4_4nk3b")]
+offset_left = 1.0
+offset_top = 114.0
+offset_right = 1.0
+offset_bottom = 114.0
+
+[node name="TextureRect" parent="Start/Slot2" index="0"]
+texture = ExtResource("6_186hw")
+Slot = 3
+
+[node name="Slot1" parent="Start/Slot2" index="1"]
+z_index = -1
+text = "3
+"
+
+[node name="Slot3" parent="Start" instance=ExtResource("4_4nk3b")]
+offset_left = 2.0
+offset_top = 179.0
+offset_right = 2.0
+offset_bottom = 179.0
+
+[node name="TextureRect" parent="Start/Slot3" index="0"]
+Slot = 1
+
+[node name="Slot1" parent="Start/Slot3" index="1"]
+z_index = -1
+text = "1
+"
+
+[node name="Slot4" parent="Start" instance=ExtResource("4_4nk3b")]
+offset_left = -113.0
+offset_top = 177.0
+offset_right = -113.0
+offset_bottom = 177.0
+
+[node name="TextureRect" parent="Start/Slot4" index="0"]
+texture = ExtResource("9_68msp")
+Slot = 2
+
+[node name="Slot1" parent="Start/Slot4" index="1"]
+z_index = -1
+text = "2
+"
+
+[node name="Slot5" parent="Start" instance=ExtResource("4_4nk3b")]
+offset_left = -113.0
+offset_top = 296.0
+offset_right = -113.0
+offset_bottom = 296.0
+
+[node name="TextureRect" parent="Start/Slot5" index="0"]
+texture = ExtResource("11_7a3kx")
+Slot = 6
+
+[node name="Slot1" parent="Start/Slot5" index="1"]
+z_index = -1
+text = "6"
+
+[node name="Slot6" parent="Start" instance=ExtResource("4_4nk3b")]
+offset_top = 358.0
+offset_bottom = 358.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" parent="Start/Slot6" index="0"]
+offset_left = -65.0
+offset_top = -35.0
+offset_right = 61.0
+offset_bottom = 28.0
+texture = ExtResource("9_68msp")
+Slot = 5
+
+[node name="Slot1" parent="Start/Slot6" index="1"]
+z_index = -1
+text = "5
+"
+
+[node name="ShortEnergy1" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -6.0
+offset_top = 127.0
+offset_right = 34.0
+offset_bottom = 167.0
+max_value = 50.0
+fill_mode = 2
+texture_progress = ExtResource("4_gfadt")
+
+[node name="LongEnergy1" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -6.0
+offset_top = 10.0
+offset_right = 34.0
+offset_bottom = 109.0
+fill_mode = 2
+texture_progress = SubResource("AtlasTexture_hisd6")
+
+[node name="LongEnergy2" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -12.0
+offset_top = 170.0
+offset_right = 28.0
+offset_bottom = 269.0
+rotation = 1.5708
+fill_mode = 2
+texture_progress = SubResource("AtlasTexture_j2cmc")
+
+[node name="LongEnergy3" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = 9.0
+offset_top = 179.0
+offset_right = 18.0
+offset_bottom = 280.0
+rotation = 4.71239
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_1pl1k")
+
+[node name="LongEnergy4" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = 110.0
+offset_top = 179.0
+offset_right = 119.0
+offset_bottom = 286.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("3_32s4y")
+
+[node name="LongEnergy5" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = 110.0
+offset_top = 286.0
+offset_right = 119.0
+offset_bottom = 393.0
+rotation = 1.5708
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("3_32s4y")
+
+[node name="LongEnergy6" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -124.0
+offset_top = 185.0
+offset_right = -115.0
+offset_bottom = 280.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("3_32s4y")
+
+[node name="LongEnergy7" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -108.0
+offset_top = 295.0
+offset_right = -99.0
+offset_bottom = 397.0
+rotation = 4.71239
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("3_32s4y")
+
+[node name="ShortEnergy2" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -6.0
+offset_top = 295.0
+offset_right = 3.0
+offset_bottom = 338.0
+max_value = 50.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("4_gfadt")
+
+[node name="CEnergy1" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = 110.0
+offset_top = 170.0
+offset_right = 119.0
+offset_bottom = 179.0
+max_value = 20.0
+nine_patch_stretch = true
+texture_progress = ExtResource("11_hn0xt")
+
+[node name="CEnergy2" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = 110.0
+offset_top = 286.0
+offset_right = 119.0
+offset_bottom = 295.0
+max_value = 20.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_progress = ExtResource("12_mrm3u")
+
+[node name="CEnergy3" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = -6.0
+offset_top = 286.0
+offset_right = 3.0
+offset_bottom = 295.0
+max_value = 20.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("11_hn0xt")
+
+[node name="CEnergy4" type="TextureProgressBar" parent="Start"]
+z_index = -1
+offset_left = 3.0
+offset_top = 295.0
+offset_right = 12.0
+offset_bottom = 304.0
+rotation = 3.14159
+max_value = 20.0
+nine_patch_stretch = true
+texture_progress = ExtResource("12_mrm3u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Start"]
+offset_left = 65.0
+offset_top = 182.0
+offset_right = 121.0
+offset_bottom = 208.0
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+text = "False"
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Start"]
+offset_left = -76.0
+offset_top = 198.0
+offset_right = -20.0
+offset_bottom = 224.0
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+text = "True"
+scroll_active = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(592, 324)
+sprite_frames = SubResource("SpriteFrames_lkx3q")
+animation = &"Off"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = -1
+anchor_top = -0.171296
+anchor_bottom = 0.171296
+offset_left = 113.0
+offset_top = 198.0
+offset_right = 535.0
+offset_bottom = 968.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_qdcih")
+patch_margin_left = 168
+patch_margin_top = 168
+patch_margin_right = 164
+patch_margin_bottom = 164
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 28.0
+offset_right = 266.0
+offset_bottom = 108.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("8_wm65y")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 184.0
+offset_right = 266.0
+offset_bottom = 264.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_68msp")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.157258
+anchor_bottom = 0.157258
+offset_left = 116.0
+offset_top = 372.0
+offset_right = 266.0
+offset_bottom = 452.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("10_jtwae")
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.157258
+anchor_bottom = 0.157258
+offset_left = 116.0
+offset_top = 536.0
+offset_right = 266.0
+offset_bottom = 616.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_68msp")
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.157258
+anchor_bottom = 0.157258
+offset_left = 116.0
+offset_top = 686.0
+offset_right = 266.0
+offset_bottom = 766.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("11_7a3kx")
+stretch_mode = 4
+
+[node name="TextureRect6" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 130.0
+offset_right = 236.0
+offset_bottom = 168.0
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("12_tvwvk")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect11" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.668246
+anchor_top = -0.0241935
+anchor_right = -0.668246
+anchor_bottom = -0.0241935
+offset_left = 488.8
+offset_top = 305.5
+offset_right = 516.8
+offset_bottom = 343.5
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("12_tvwvk")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect7" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.159274
+anchor_bottom = 0.159274
+offset_left = 208.0
+offset_top = 318.0
+offset_right = 236.0
+offset_bottom = 356.0
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("12_tvwvk")
+stretch_mode = 4
+
+[node name="TextureRect8" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.159274
+anchor_bottom = 0.159274
+offset_left = 208.0
+offset_top = 482.0
+offset_right = 236.0
+offset_bottom = 520.0
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("12_tvwvk")
+stretch_mode = 4
+
+[node name="TextureRect9" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.159274
+anchor_bottom = 0.159274
+offset_left = 208.0
+offset_top = 632.0
+offset_right = 236.0
+offset_bottom = 670.0
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("12_tvwvk")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 62.0
+offset_right = 294.0
+offset_bottom = 102.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "START"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 212.0
+offset_right = 286.0
+offset_bottom = 252.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "INPUT"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.155242
+anchor_bottom = 0.155242
+offset_left = 168.0
+offset_top = 398.0
+offset_right = 282.0
+offset_bottom = 438.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "PROCESS"
+fit_content = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.155242
+anchor_bottom = 0.155242
+offset_left = 178.0
+offset_top = 556.0
+offset_right = 282.0
+offset_bottom = 596.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "OUTPUT
+"
+fit_content = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.155242
+anchor_bottom = 0.155242
+offset_left = 200.0
+offset_top = 710.0
+offset_right = 304.0
+offset_bottom = 750.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "END
+"
+fit_content = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="NinePatchRect"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.155242
+anchor_bottom = 0.155242
+offset_left = 172.0
+offset_top = 232.0
+offset_right = 288.0
+offset_bottom = 272.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_55c3u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "decision
+"
+fit_content = true
+
+[node name="TextureRect10" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 334.0
+offset_right = 248.0
+offset_bottom = 428.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_186hw")
+
+[node name="XButton" type="TextureButton" parent="."]
+offset_left = 1091.0
+offset_top = 7.0
+offset_right = 1131.0
+offset_bottom = 47.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("14_sikko")
+texture_pressed = ExtResource("15_evhub")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 536.0
+offset_top = 56.0
+offset_right = 638.0
+offset_bottom = 102.0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="XButton" to="." method="_on_x_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="Start/Slot1"]
+[editable path="Start/Slot2"]
+[editable path="Start/Slot3"]
+[editable path="Start/Slot4"]
+[editable path="Start/Slot5"]
+[editable path="Start/Slot6"]

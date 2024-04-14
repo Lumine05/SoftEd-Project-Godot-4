@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7fjl5tb33qv"]
+
+[ext_resource type="Texture2D" uid="uid://bs1fc5v3bbvet" path="res://Player/SettingBTNHover.png" id="1_yeeow"]
+[ext_resource type="Texture2D" uid="uid://m2r5bwabcsgv" path="res://Player/SettingBTNClicked.png" id="2_sxsdr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 42.0
+offset_right = 162.0
+offset_bottom = 82.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_yeeow")
+texture_pressed = ExtResource("1_yeeow")
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("2_sxsdr")
+texture_pressed = ExtResource("1_yeeow")
+
+[node name="CenterContainer3" type="CenterContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/CenterContainer3"]
+layout_mode = 2
