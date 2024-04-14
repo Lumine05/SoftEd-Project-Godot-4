@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctlsu2lih8emc"]
+
+[ext_resource type="FontFile" uid="uid://galii81ef8j4" path="res://Level 1 Puzz/fonts/ThaleahFat.ttf" id="1_253ix"]
+
+[sub_resource type="Gradient" id="Gradient_hhdls"]
+colors = PackedColorArray(0.337255, 0.337255, 0.337255, 0.470588, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x8k4n"]
+gradient = SubResource("Gradient_hhdls")
+fill = 1
+fill_from = Vector2(0.479675, 0.46748)
+
+[node name="Control" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 208.0
+offset_bottom = 118.0
+scale = Vector2(2.8, 2.8)
+texture = SubResource("GradientTexture2D_x8k4n")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 189.0
+offset_top = 89.0
+offset_right = 414.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("1_253ix")
+theme_override_font_sizes/normal_font_size = 60
+text = "You Died."
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 212.0
+offset_top = 134.0
+offset_right = 380.0
+offset_bottom = 171.0
+theme_override_fonts/normal_font = ExtResource("1_253ix")
+theme_override_font_sizes/normal_font_size = 40
+text = "Try Again.
+"
+fit_content = true

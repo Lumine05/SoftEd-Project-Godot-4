@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://b34gfwm5kd7sm"]
+
+[ext_resource type="Texture2D" uid="uid://coxhgiq5dle16" path="res://Player/hp_bar_outer_v2 - Copy.png" id="1_l6fop"]
+[ext_resource type="Script" path="res://Player/Hud.gd" id="1_oaqta"]
+[ext_resource type="Texture2D" uid="uid://cv221kf2uwj4d" path="res://Player/SettingBTN.png" id="3_clcfk"]
+[ext_resource type="Texture2D" uid="uid://bjg8xnaiqeb7n" path="res://Player/hp_bar_inner_v2-export.png" id="3_h7gk2"]
+[ext_resource type="Texture2D" uid="uid://m2r5bwabcsgv" path="res://Player/SettingBTNClicked.png" id="4_pca16"]
+[ext_resource type="Texture2D" uid="uid://bs1fc5v3bbvet" path="res://Player/SettingBTNHover.png" id="5_1rh8n"]
+[ext_resource type="Texture2D" uid="uid://b47c2ans1gk6n" path="res://Player/QuestBTN.png" id="6_nq1dw"]
+[ext_resource type="Texture2D" uid="uid://phjva7hmlk7f" path="res://Player/QuestBTNCliked.png" id="7_mfj4b"]
+[ext_resource type="Texture2D" uid="uid://covwgygobg1xd" path="res://Player/QuestBTNHover.png" id="8_3h38a"]
+[ext_resource type="PackedScene" uid="uid://d36ne3p07rrf3" path="res://Player/PauseMenu.tscn" id="10_1kqbt"]
+[ext_resource type="AudioStream" uid="uid://4hau82dr3mda" path="res://SoundsPack/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 30.wav" id="11_hohoa"]
+[ext_resource type="PackedScene" uid="uid://cw2wst0drvr6w" path="res://Player/QuestManager.tscn" id="12_cliug"]
+[ext_resource type="PackedScene" uid="uid://bl2e513exjxc5" path="res://Player/TutorialScene.tscn" id="13_rgy86"]
+[ext_resource type="Texture2D" uid="uid://ei3djaqcslpt" path="res://Player/RedHealth.png" id="14_3clnl"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_oaqta")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 257.0
+offset_bottom = 40.0
+scale = Vector2(1.4, 1.4)
+size_flags_stretch_ratio = 0.0
+max_value = 30.0
+value = 30.0
+texture_over = ExtResource("1_l6fop")
+texture_progress = ExtResource("3_h7gk2")
+
+[node name="Menu" type="TextureButton" parent="."]
+offset_left = 1094.0
+offset_top = 6.0
+offset_right = 1134.0
+offset_bottom = 46.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("3_clcfk")
+texture_pressed = ExtResource("4_pca16")
+texture_hover = ExtResource("5_1rh8n")
+stretch_mode = 0
+
+[node name="Quest" type="TextureButton" parent="."]
+offset_left = 362.0
+offset_top = 6.0
+offset_right = 402.0
+offset_bottom = 46.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("6_nq1dw")
+texture_pressed = ExtResource("7_mfj4b")
+texture_hover = ExtResource("8_3h38a")
+stretch_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hohoa")
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_1kqbt")]
+visible = false
+
+[node name="QuestTab" parent="." instance=ExtResource("12_cliug")]
+visible = false
+
+[node name="Tutorial" parent="." instance=ExtResource("13_rgy86")]
+offset_left = 609.0
+offset_top = 240.0
+offset_right = -380.0
+offset_bottom = -372.0
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+z_index = -1
+offset_left = 2.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 48.0
+scale = Vector2(1.4, 1.4)
+max_value = 30.0
+value = 30.0
+texture_progress = ExtResource("14_3clnl")
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Quest" to="." method="_on_quest_pressed"]

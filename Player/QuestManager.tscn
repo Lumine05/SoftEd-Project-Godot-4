@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw2wst0drvr6w"]
+
+[ext_resource type="Script" path="res://Player/QuestManager.gd" id="1_iuf42"]
+[ext_resource type="FontFile" uid="uid://galii81ef8j4" path="res://Level 1 Puzz/fonts/ThaleahFat.ttf" id="2_chlbh"]
+[ext_resource type="Texture2D" uid="uid://cp45smqen43k" path="res://Player/MenuSettingHolder.png" id="2_utidr"]
+[ext_resource type="Texture2D" uid="uid://cwqx68drx8w02" path="res://Player/ContinueBTN.png" id="3_rtbf0"]
+[ext_resource type="Texture2D" uid="uid://b2d35uffao850" path="res://Player/ContinueBTNClicked.png" id="4_i7qgh"]
+[ext_resource type="AudioStream" uid="uid://4hau82dr3mda" path="res://SoundsPack/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 30.wav" id="6_httsn"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_iuf42")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 339.0
+offset_top = 156.0
+offset_right = 822.0
+offset_bottom = 480.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_utidr")
+region_rect = Rect2(0, 0, 504, 410)
+patch_margin_left = 170
+patch_margin_top = 130
+patch_margin_right = 157
+patch_margin_bottom = 140
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_chlbh")
+theme_override_font_sizes/normal_font_size = 30
+text = "                Fix Elevator"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "______________________________________________________________"
+fit_content = true
+scroll_active = false
+text_direction = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_chlbh")
+theme_override_font_sizes/normal_font_size = 20
+text = "1. Navigate where the tab computer is located.
+
+2. Access the tab computer and decipher the instructions for arranging the elevator's physical components.
+
+3. Examine the physical components of the elevator and rearrange them according to the instructions provided by the tab computer."
+fit_content = true
+scroll_active = false
+
+[node name="Continue" type="TextureButton" parent="."]
+offset_left = 526.0
+offset_top = 421.0
+offset_right = 636.0
+offset_bottom = 461.0
+texture_normal = ExtResource("3_rtbf0")
+texture_pressed = ExtResource("4_i7qgh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_httsn")
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
