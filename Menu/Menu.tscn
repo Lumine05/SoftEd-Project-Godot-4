@@ -1,0 +1,150 @@
+[gd_scene load_steps=21 format=3 uid="uid://dyv05rcx6lrpr"]
+
+[ext_resource type="Script" path="res://Menu/Scripts/StartMenu.gd" id="1_2514g"]
+[ext_resource type="Texture2D" uid="uid://dm568siyxx5sr" path="res://Menu/Textures/NewTitleScreen.png" id="2_crg1q"]
+[ext_resource type="Texture2D" uid="uid://ca0ln8olbf58r" path="res://Menu/Textures/StartBtn.png" id="4_jogig"]
+[ext_resource type="Texture2D" uid="uid://bfw0jc08ytate" path="res://Menu/Textures/StartBtnClicked.png" id="5_dkq07"]
+[ext_resource type="Texture2D" uid="uid://bmmfjs2g5r5s3" path="res://Menu/Textures/StartBtnHover.png" id="6_i63pq"]
+[ext_resource type="Texture2D" uid="uid://dw3f6l0hbxkhl" path="res://Menu/Textures/QuitBTN.png" id="7_5lcp5"]
+[ext_resource type="Texture2D" uid="uid://l0qa1nuvvpnw" path="res://Menu/Textures/LevelsBtn.png" id="7_bfpqu"]
+[ext_resource type="Texture2D" uid="uid://ccod8l07550rx" path="res://Menu/Textures/QuitBTNClicked.png" id="8_3hnsj"]
+[ext_resource type="Texture2D" uid="uid://cvq6i418ymnjv" path="res://Menu/Textures/LevelsBtnClicked.png" id="8_xrka2"]
+[ext_resource type="AudioStream" uid="uid://bxs23wwus3yq5" path="res://SoundsPack/Pawprint Panic! (FULL ALBUM)  NAPCAST.mp3" id="9_284tt"]
+[ext_resource type="Texture2D" uid="uid://c268wcbqogs1j" path="res://Menu/Textures/LevelsBtnHover.png" id="9_f75hp"]
+[ext_resource type="Texture2D" uid="uid://b6f0lnhij42jg" path="res://Menu/Textures/QuitBTNHover.png" id="9_luncc"]
+[ext_resource type="Texture2D" uid="uid://bmm8twv7drulw" path="res://Menu/Textures/OptionsBtn.png" id="10_lhu78"]
+[ext_resource type="Texture2D" uid="uid://df5kcyst5jmk" path="res://Menu/Textures/OptionsBtnClicked.png" id="11_asks3"]
+[ext_resource type="Texture2D" uid="uid://x8qjwf2m8pat" path="res://Menu/Textures/OptionsBtnHover.png" id="12_e7aci"]
+[ext_resource type="Script" path="res://Menu/Lamp.gd" id="18_kugwn"]
+[ext_resource type="FontFile" uid="uid://galii81ef8j4" path="res://Level 1 Puzz/fonts/ThaleahFat.ttf" id="19_q12x1"]
+
+[sub_resource type="Environment" id="Environment_8phok"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.3
+glow_strength = 0.41
+glow_bloom = 0.1
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 6.98
+volumetric_fog_albedo = Color(0.517647, 0.101961, 1, 1)
+volumetric_fog_ambient_inject = 2.52
+
+[sub_resource type="Gradient" id="Gradient_lr7jo"]
+colors = PackedColorArray(1, 0.760784, 0.658824, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_twlhd"]
+gradient = SubResource("Gradient_lr7jo")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.516129, 0.46371)
+fill_to = Vector2(0.909774, 0.274436)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+script = ExtResource("1_2514g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 2302.0
+offset_bottom = 1286.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_crg1q")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 601.0
+offset_top = 420.0
+offset_right = 711.0
+offset_bottom = 484.0
+scale = Vector2(1.7, 1.7)
+
+[node name="Options" type="TextureButton" parent="VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("10_lhu78")
+texture_pressed = ExtResource("11_asks3")
+texture_hover = ExtResource("12_e7aci")
+
+[node name="Levels" type="TextureButton" parent="VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("7_bfpqu")
+texture_pressed = ExtResource("8_xrka2")
+texture_hover = ExtResource("9_f75hp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 411.0
+offset_top = -226.0
+offset_right = 521.0
+offset_bottom = -162.0
+grow_vertical = 0
+scale = Vector2(1.7, 1.7)
+
+[node name="Start Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_jogig")
+texture_pressed = ExtResource("5_dkq07")
+texture_hover = ExtResource("6_i63pq")
+
+[node name="Quit Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_5lcp5")
+texture_pressed = ExtResource("8_3hnsj")
+texture_hover = ExtResource("9_luncc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_284tt")
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8phok")
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="Lamp" type="PointLight2D" parent="Lights"]
+position = Vector2(292, 499)
+scale = Vector2(1.42188, 1.375)
+texture = SubResource("GradientTexture2D_twlhd")
+script = ExtResource("18_kugwn")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 50.0
+offset_right = 895.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.258824, 0.290196, 0.654902, 1)
+theme_override_colors/font_outline_color = Color(0.952941, 0.960784, 0.968627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("19_q12x1")
+theme_override_font_sizes/font_size = 100
+text = "Pixel Puzzles"
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.033
+offset_left = -23.0
+offset_top = 79.0
+offset_right = 624.2
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0.133333, 0.141176, 0.427451, 1)
+theme_override_colors/font_outline_color = Color(0.945098, 0.443137, 0.498039, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("19_q12x1")
+theme_override_font_sizes/font_size = 40
+text = "Interactive Learning Programming Game"
+
+[connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]

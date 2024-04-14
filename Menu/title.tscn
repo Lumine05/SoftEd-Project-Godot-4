@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw25kl5hicluk"]
+
+[ext_resource type="Shader" path="res://Menu/Menu.gdshader" id="1_xy0sj"]
+[ext_resource type="FontFile" uid="uid://galii81ef8j4" path="res://Dialogues/CustomTexture/fonts/ThaleahFat.ttf" id="2_slkui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhgkv"]
+shader = ExtResource("1_xy0sj")
+
+[sub_resource type="Environment" id="Environment_48u32"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.39
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 77.25
+fog_light_color = Color(0.933333, 0.352941, 0.729412, 1)
+fog_light_energy = 0.0
+volumetric_fog_albedo = Color(0.517647, 0.101961, 1, 1)
+volumetric_fog_emission_energy = 141.55
+volumetric_fog_ambient_inject = 2.52
+
+[node name="Title" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_dhgkv")
+offset_left = 273.0
+offset_top = 59.0
+offset_right = 877.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0.305882, 0.380392, 0.74902, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.847059, 0.768627, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_slkui")
+theme_override_font_sizes/font_size = 109
+text = "Pixel puzzle
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 141.0
+offset_right = 906.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.945098, 0.380392, 0.478431, 1)
+theme_override_fonts/font = ExtResource("2_slkui")
+theme_override_font_sizes/font_size = 40
+text = "Interactive Programming learning game"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_48u32")
