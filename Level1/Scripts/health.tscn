@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dau6p3ivvbo76"]
+
+[ext_resource type="Texture2D" uid="uid://rra86hjef55h" path="res://lenard resp/HeartIcon3.png" id="1_ctkr3"]
+[ext_resource type="Texture2D" uid="uid://bir25v5m5y4k1" path="res://lenard resp/HeartIcon1.png" id="1_iukcv"]
+[ext_resource type="Texture2D" uid="uid://d24v3ej8uixyv" path="res://lenard resp/HeartIcon2.png" id="2_ef741"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4jtg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ctkr3")
+}],
+"loop": false,
+"name": &"Heart20",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ef741")
+}],
+"loop": false,
+"name": &"Heart25",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iukcv")
+}],
+"loop": false,
+"name": &"Heart30",
+"speed": 5.0
+}]
+
+[node name="Health" type="Node2D"]
+z_index = 5
+position = Vector2(182, 236)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-43, -30)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 16
+z_index = 5
+texture_filter = 1
+position = Vector2(-100, -52)
+sprite_frames = SubResource("SpriteFrames_e4jtg")
+animation = &"Heart30"
