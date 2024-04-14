@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckvgyvclnwggo"]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_cital"]
+[ext_resource type="AudioStream" uid="uid://dp2todq0elogj" path="res://SoundsPack/7dq8v-e0yxb.wav" id="2_swuc1"]
+[ext_resource type="AudioStream" uid="uid://cs4d0se45mmmc" path="res://SoundsPack/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 49.wav" id="3_6y0ap"]
+
+[node name="DialogueLabel" type="RichTextLabel"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 1
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+visible_characters_behavior = 1
+script = ExtResource("1_cital")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_swuc1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6y0ap")

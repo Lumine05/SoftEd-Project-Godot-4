@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bco5dgxrgk7xc"]
+
+[ext_resource type="Texture2D" uid="uid://ctwis1vecipah" path="res://CodeHints/CodeJump.png" id="1_h1m3e"]
+[ext_resource type="Texture2D" uid="uid://dsby2tcc1l4xp" path="res://CodeHints/Textures/CodeWatchOut.png" id="2_61mla"]
+[ext_resource type="Texture2D" uid="uid://7hw8dvte7m5" path="res://CodeHints/Textures/CodeJavaOOP.png" id="3_nwvvy"]
+[ext_resource type="Texture2D" uid="uid://ntw74ql7kfpc" path="res://CodeHints/Textures/Code Hostile WARNING.png" id="4_g3e0y"]
+[ext_resource type="Texture2D" uid="uid://c7yxdjk0mt46s" path="res://CodeHints/Textures/CodeDontFAll.png" id="5_h5exa"]
+[ext_resource type="Texture2D" uid="uid://cb6ogoaidsjo0" path="res://CodeHints/Textures/CodeJumpJump.png" id="6_r0twm"]
+[ext_resource type="Texture2D" uid="uid://csww7qmnqop4n" path="res://CodeHints/Textures/CodeAdventure.png" id="7_strsu"]
+
+[node name="Node2D" type="Node2D"]
+z_index = -1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_h1m3e")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 4.0
+offset_top = 52.0
+offset_right = 196.0
+offset_bottom = 116.0
+texture = ExtResource("2_61mla")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 5.0
+offset_top = 97.0
+offset_right = 255.0
+offset_bottom = 161.0
+texture = ExtResource("3_nwvvy")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 17.0
+offset_top = 144.0
+offset_right = 209.0
+offset_bottom = 208.0
+texture = ExtResource("4_g3e0y")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = 171.0
+offset_top = -1.0
+offset_right = 363.0
+offset_bottom = 63.0
+texture = ExtResource("5_h5exa")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = 224.0
+offset_top = 64.0
+offset_right = 416.0
+offset_bottom = 128.0
+texture = ExtResource("6_r0twm")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_strsu")
