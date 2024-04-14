@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://5ihhxfk1u4km"]
+
+[ext_resource type="Texture2D" uid="uid://cdmsvrovmu57t" path="res://Level1/Sprites/Interact.png" id="1_8e4ar"]
+[ext_resource type="Script" path="res://Player/Script/Interact.gd" id="2_ujudx"]
+[ext_resource type="Script" path="res://Player/Interactions/Interact2.gd" id="3_6fswl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixbeo"]
+atlas = ExtResource("1_8e4ar")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssm2t"]
+atlas = ExtResource("1_8e4ar")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np74d"]
+atlas = ExtResource("1_8e4ar")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dnb5"]
+atlas = ExtResource("1_8e4ar")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n34xk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssm2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np74d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dnb5")
+}],
+"loop": true,
+"name": &"Interaction_Comp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ylaf"]
+size = Vector2(20, 70)
+
+[node name="Node" type="Node"]
+
+[node name="Comp1" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n34xk")
+animation = &"Interaction_Comp"
+frame_progress = 0.330627
+script = ExtResource("2_ujudx")
+
+[node name="Area2D" type="Area2D" parent="Comp1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp1/Area2D"]
+position = Vector2(0, 54.5)
+shape = SubResource("RectangleShape2D_7ylaf")
+
+[node name="Comp2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n34xk")
+animation = &"Interaction_Comp"
+frame_progress = 0.330627
+script = ExtResource("3_6fswl")
+
+[node name="Area2D" type="Area2D" parent="Comp2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2/Area2D"]
+position = Vector2(0, 54.5)
+shape = SubResource("RectangleShape2D_7ylaf")
+
+[connection signal="body_entered" from="Comp1/Area2D" to="Comp1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Comp1/Area2D" to="Comp1" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Comp2/Area2D" to="Comp2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Comp2/Area2D" to="Comp2" method="_on_area_2d_body_exited"]

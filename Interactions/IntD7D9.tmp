@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://5ihhxfk1u4km"]
+
+[ext_resource type="Texture2D" uid="uid://b7iqw3ga8jtei" path="res://Player/InteractionsTexture/Interact.png" id="1_pv3d5"]
+[ext_resource type="Script" path="res://Player/Script/Interact.gd" id="2_ujudx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtgqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rndl1"]
+atlas = ExtResource("1_pv3d5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p55f1"]
+atlas = ExtResource("1_pv3d5")
+region = Rect2(48, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf4ow"]
+atlas = ExtResource("1_pv3d5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8v48"]
+atlas = ExtResource("1_pv3d5")
+region = Rect2(144, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myl2v"]
+atlas = ExtResource("1_pv3d5")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0yxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rndl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p55f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf4ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8v48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myl2v")
+}],
+"loop": true,
+"name": &"Interact_Comp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0chn"]
+size = Vector2(20, 72)
+
+[node name="Interactions" type="Node2D"]
+
+[node name="Comp_Interact" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp_Interact"]
+shape = SubResource("CircleShape2D_vtgqk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Comp_Interact"]
+sprite_frames = SubResource("SpriteFrames_j0yxn")
+animation = &"Interact_Comp"
+autoplay = "Interact_Comp"
+frame_progress = 0.700167
+script = ExtResource("2_ujudx")
+
+[node name="Area2D" type="Area2D" parent="Comp_Interact"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp_Interact/Area2D"]
+position = Vector2(0, 45)
+shape = SubResource("RectangleShape2D_f0chn")
+
+[connection signal="area_entered" from="Comp_Interact/Area2D" to="Comp_Interact" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Comp_Interact/Area2D" to="Comp_Interact" method="_on_area_2d_area_exited"]
