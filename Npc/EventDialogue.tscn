@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhhw36at0a3gg"]
+
+[ext_resource type="Script" path="res://Npc/Scripts/Actionable.gd" id="1_ilmid"]
+[ext_resource type="Resource" uid="uid://sq5kj13tk2r6" path="res://Dialogues/JavaBip.dialogue" id="2_xm7rs"]
+[ext_resource type="Script" path="res://Npc/JavaBopScript.gd" id="3_24ebg"]
+[ext_resource type="Script" path="res://Player/Interactions/IntComp.gd" id="4_yq52r"]
+[ext_resource type="Resource" uid="uid://sgspjphe7lv5" path="res://Dialogues/Java.dialogue" id="5_0ypqc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yg467"]
+radius = 38.0
+
+[node name="Actionable" type="Area2D"]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_ilmid")
+dialogue_resource = ExtResource("2_xm7rs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yg467")
+debug_color = Color(0.952941, 0.188235, 0.262745, 0.419608)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Actionable2" type="Area2D" parent="Node"]
+script = ExtResource("3_24ebg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Actionable2"]
+shape = SubResource("CircleShape2D_yg467")
+debug_color = Color(0.952941, 0.188235, 0.262745, 0.419608)
+
+[node name="Actionable3" type="Area2D" parent="Node"]
+script = ExtResource("4_yq52r")
+dialogue_resource = ExtResource("5_0ypqc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Actionable3"]
+shape = SubResource("CircleShape2D_yg467")
+debug_color = Color(0.952941, 0.188235, 0.262745, 0.419608)

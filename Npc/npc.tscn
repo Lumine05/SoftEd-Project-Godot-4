@@ -1,0 +1,125 @@
+[gd_scene load_steps=17 format=3 uid="uid://dghy7hlq2ggq0"]
+
+[ext_resource type="Texture2D" uid="uid://cjo6bqjor5v2j" path="res://Npc/NpcSprite/Npc Robo Cat(Remade)leftlok-Sheet.png" id="1_85ieb"]
+[ext_resource type="Texture2D" uid="uid://b5mmja3ntco3f" path="res://Npc/QTalk/Qtalk1.png" id="2_m2l66"]
+[ext_resource type="Texture2D" uid="uid://dfkkq7s42ap6l" path="res://Npc/QTalk/Qtalk2.png" id="3_quwpk"]
+[ext_resource type="Texture2D" uid="uid://bb4fvyu4gng7u" path="res://Npc/QTalk/Qtalk3.png" id="4_smjmk"]
+[ext_resource type="Texture2D" uid="uid://delih1osgipv2" path="res://Npc/QTalk/Qtalk4.png" id="5_w5inh"]
+[ext_resource type="Texture2D" uid="uid://bml6g211s0a1d" path="res://Npc/QTalk/Qtalk5.png" id="6_cj1y2"]
+[ext_resource type="Script" path="res://Npc/QTALK.gd" id="7_3oat5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqr4w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0cmt"]
+atlas = ExtResource("1_85ieb")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl7yu"]
+atlas = ExtResource("1_85ieb")
+region = Rect2(80, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3lnx"]
+atlas = ExtResource("1_85ieb")
+region = Rect2(160, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rj63"]
+atlas = ExtResource("1_85ieb")
+region = Rect2(240, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcai3"]
+atlas = ExtResource("1_85ieb")
+region = Rect2(320, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iew23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0cmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl7yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3lnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rj63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcai3")
+}],
+"loop": true,
+"name": &"NPC_Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aknbl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m2l66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_quwpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smjmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w5inh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cj1y2")
+}],
+"loop": true,
+"name": &"Q",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivenp"]
+radius = 42.5184
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_bqr4w")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_iew23")
+animation = &"NPC_Idle"
+autoplay = "NPC_Idle"
+frame_progress = 0.306257
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-23.75, -12.5)
+sprite_frames = SubResource("SpriteFrames_aknbl")
+animation = &"Q"
+frame = 4
+frame_progress = 0.624037
+script = ExtResource("7_3oat5")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/AnimatedSprite2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AnimatedSprite2D2/Area2D"]
+position = Vector2(23.75, 30)
+shape = SubResource("CircleShape2D_ivenp")
+debug_color = Color(0.831373, 0.266667, 0.713726, 0.419608)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("CircleShape2D_bqr4w")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+sprite_frames = SubResource("SpriteFrames_iew23")
+animation = &"NPC_Idle"
+autoplay = "NPC_Idle"
+frame_progress = 0.306257
+
+[connection signal="body_entered" from="CharacterBody2D/AnimatedSprite2D2/Area2D" to="CharacterBody2D/AnimatedSprite2D2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/AnimatedSprite2D2/Area2D" to="CharacterBody2D/AnimatedSprite2D2" method="_on_area_2d_body_exited"]
